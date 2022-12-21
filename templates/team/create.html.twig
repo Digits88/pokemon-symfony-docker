@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Pokémon team!{% endblock %}
+
+{% block body %}
+    <h1 class="display-5 fw-bold">Create team!</h1>
+    <p class="col-md-8 fs-4">A real Poke master wins with any Pokémon, let them choose at random.<br>
+        Pressing the "Gotta Catch 'Em All" button, when you are satisfied save your team!</p>
+    <p></p>
+    {{ form_start(form, {'attr': {'id': 'formTeam', 'onsubmit':'return validateForm();'}}) }}
+    {{ form_rest(form) }}
+    <div class="container mx-auto mt-4" id="PokemonTeam">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card free" style="width: 15rem;">
+                    <img src="/poke.gif"
+                         class="card-img-top" alt="Poke ball">
+                    <div class="card-body">
+                        <h5 class="card-title">Pokemon</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">EXP</h6>
+                        <p class="card-text">Abilities:</p>
+                        <p class="card-text">Types:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card free" style="width: 15rem;">
+                    <img src="/poke.gif"
+                         class="card-img-top" alt="Poke ball">
+                    <div class="card-body">
+                        <h5 class="card-title">Pokemon</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">EXP</h6>
+                        <p class="card-text">Abilities:</p>
+                        <p class="card-text">Types:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card free" style="width: 15rem;">
+                    <img src="/poke.gif"
+                         class="card-img-top" alt="Poke ball">
+                    <div class="card-body">
+                        <h5 class="card-title">Pokemon</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">EXP</h6>
+                        <p class="card-text">Abilities:</p>
+                        <p class="card-text">Types:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card free" style="width: 15rem;">
+                    <img src="/poke.gif"
+                         class="card-img-top" alt="Poke ball">
+                    <div class="card-body">
+                        <h5 class="card-title">Pokemon</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">EXP</h6>
+                        <p class="card-text">Abilities:</p>
+                        <p class="card-text">Types:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card free" style="width: 15rem;">
+                    <img src="/poke.gif"
+                         class="card-img-top" alt="Poke ball">
+                    <div class="card-body">
+                        <h5 class="card-title">Pokemon</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">EXP</h6>
+                        <p class="card-text">Abilities:</p>
+                        <p class="card-text">Types:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card free" style="width: 15rem;">
+                    <img src="/poke.gif"
+                         class="card-img-top" alt="Poke ball">
+                    <div class="card-body">
+                        <h5 class="card-title">Pokemon</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">EXP</h6>
+                        <p class="card-text">Abilities:</p>
+                        <p class="card-text">Types:</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary" onclick="addPokemonToTeam()">Gotta Catch 'Em All</a>
+    <button class="btn btn-success" name="Insert" type="submit">Save team</button>
+    <a href="/team/create" class="btn btn-secondary" style="float: right">Reset</a>
+    <a href="/team" class="btn btn-secondary" style="float: right; margin-right: 2px">Homepage</a>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block footer_js %}
+     <script src="{{ asset('js/create.js') }}"></script>
+{% endblock %}

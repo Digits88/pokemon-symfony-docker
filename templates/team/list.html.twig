@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of Pokémon{% endblock %}
+
+{% block body %}
+    <h1 class="display-5 fw-bold">List of created team</h1>
+    <p class="col-md-8 fs-4">Here are all your Pokémon teams you created, <br>
+        on the right you will find the action buttons to edit or delete the team</p>
+    <label for="selectPokemonType">Filter by Pokémon type:</label>
+    <select class="selectpicker" multiple data-live-search="true" id="selectPokemonType" data-style="btn-info">
+        {% for type in types %}
+            <option value="{{ type.id }}">{{ type.name }}</option>
+        {% endfor %}
+    </select>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sprite</th>
+            <th scope="col">Sum Exp</th>
+            <th scope="col">Types</th>
+            <th scope="col">Creation date</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr id="team_id_{{ team.id }}">
+                <th scope="row">{{ team.id }}</th>
+                <td> {{ team.name }}</td>
+                <td>{% for pokemon in  team.pokemon %}
+                        <img class="img-thumbnail col-sm-3" src="{{ pokemon.sprite }}" alt="Pokemon sprite"/>
+                    {% endfor %}
+                </td>
+                <td> {% set sum = 0 %}
+                    {% for pokemon in  team.pokemon %}
+                        {% set sum = sum + pokemon.baseExperience %}
+                    {% endfor %}
+                    {{ sum }}</td>
+                <td>
+                    <ul>
+                        {% for typeId, typeName in team.typeList %}
+                            <li data-type="{{ typeId }}"><img
+                                        src="https://veekun.com/dex/media/types/en/{{ typeName }}.png" alt="type"/></li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td> {{ team.createdAt | date('d-m-Y') }}</td>
+                <td><a class="btn btn-primary" href="/team/{{ team.id }}/edit" role="button">Edit</a></td>
+                <td><a class="btn btn-primary" href="/team/{{ team.id }}/delete" role="button">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="/team/create" class="btn btn-secondary" style="float: right">Create new team</a>
+    <a href="/team" class="btn btn-secondary" style="float: right; margin-right: 2px">Homepage</a>
+{% endblock %}
+{% block footer_js %}
+    <script src="{{ asset('js/list.js') }}"></script>
+{% endblock %}

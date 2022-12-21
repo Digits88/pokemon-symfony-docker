@@ -1,0 +1,5 @@
+#!/bin/sh
+
+docker-compose exec php-fpm chmod -R 777 /var/symfony
+docker-compose exec php-fpm chmod -R 777 /application/var/cache
+docker-compose exec php-fpm chmod -R 777 /application/var/logs
